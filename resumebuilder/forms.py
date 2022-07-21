@@ -61,6 +61,7 @@ class ProfileForm(forms.ModelForm):
             'job_date_form': 'Started From',
             'job_date_to' : 'To',
             'college_name' : 'College Name',
+            'gpa':'GPA',
             'profile_picture' : 'Profile Picture'
             }
         widgets = {
