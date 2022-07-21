@@ -15,18 +15,25 @@
     list-style-type: none;
     display: inline-flex;
   }
-  
+
   #id_gender_0, #id_gender_1, #id_gender_2{
     margin-left: 10px;
-  }   
+  }
+  
+  #id_skills{
+    font-size: small;
+  }
 </style>
 <body>
  <div class="container mb-5">
   <h2 class=" alert alert-success text-center " style=" font-family: Lucida Console, Courier New, monospace;">Resume Builder</h2>
   <div class="row">
    <div class="col-sm-8">
-    <form action="" method="post" enctype="multipart/form-data" class="shadow p-5">
+    <form action="" method="POST" enctype="multipart/form-data" class="shadow p-5"> 
      {% csrf_token %}
+     {% for message in messages %}
+     <small class="text-center " style="color: green;">{{message}}</small>
+    {% endfor %}
      {% for fm in form %}
        <div class="form-group mb-3">
        {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>

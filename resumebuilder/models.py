@@ -20,7 +20,7 @@ class Profile(models.Model):
     course = models.CharField(max_length=50)
     gpa = models.DecimalField(max_digits=2, decimal_places=1)
     skills = models.CharField(max_length=150)
-    profile_picture = models.ImageField(upload_to = 'pics', blank=True)
+    profile_picture = models.ImageField(upload_to = 'pics')
 
 
 
