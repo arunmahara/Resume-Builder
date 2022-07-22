@@ -53,16 +53,19 @@ class ProfileForm(forms.ModelForm):
     skills = forms.MultipleChoiceField(choices=SKILL_CHOICES)
     class Meta:
         model= Profile
-        fields = ['name','gender','address','email', 'social', 'number', 'title', 'objective', 'company_name','job_title', 'job_date_form','job_date_to', 'college_name','course', 'gpa','skills', 'profile_picture']
+        fields = ['name','gender','address','email', 'social', 'number', 'title', 'objective', 'company_name','job_title', 'job_works', 'job_date_from','job_date_to', 'college_name','course', 'course_modules', 'gpa','skills', 'profile_picture']
         labels = {
-            'number': 'Contact',
-            'company_name': 'Previous Company',
-            'job_title': 'Job Title',
-            'job_date_form': 'Started From',
-            'job_date_to' : 'To',
-            'college_name' : 'College Name',
-            'gpa':'GPA',
-            'profile_picture' : 'Profile Picture'
+            'number': 'Contact ',
+            'social': 'Social (eg: linkedin) / Optional ',
+            'company_name': 'Experience (Company Name & Address) ',
+            'job_title': 'Job Title ',
+            'job_works': 'Job Summary ',
+            'job_date_form': 'Started From ',
+            'job_date_to' : 'To ',
+            'college_name' : 'College Name & Address ',
+            'course_module': 'Course Modules ',
+            'gpa':'GPA ',
+            'profile_picture' : 'Profile Picture '
             }
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -74,9 +77,11 @@ class ProfileForm(forms.ModelForm):
             'objective': forms.TextInput(attrs={'class': 'form-control'}),
             'company_name': forms.TextInput(attrs={'class': 'form-control'}),
             'job_title': forms.TextInput(attrs={'class': 'form-control'}),
-            'job_date_form': forms.DateInput(attrs={'class': 'form-control', 'id':'datepickerfrom'}),
+            'job_works': forms.TextInput(attrs={'class': 'form-control'}),
+            'job_date_from': forms.DateInput(attrs={'class': 'form-control', 'id':'datepickerfrom'}),
             'job_date_to': forms.DateInput(attrs={'class': 'form-control', 'id':'datepickerto'}),
             'college_name': forms.TextInput(attrs={'class': 'form-control'}),
             'course': forms.TextInput(attrs={'class': 'form-control'}),
+            'course_modules': forms.TextInput(attrs={'class': 'form-control'}),
             'gpa': forms.NumberInput(attrs={'class': 'form-control'})
         }
