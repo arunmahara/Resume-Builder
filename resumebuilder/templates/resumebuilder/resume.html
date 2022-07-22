@@ -87,9 +87,28 @@
 		</div>
 		<div class="col-sm-4">
 		<a href="/" class="btn btn-success text-center float-start pt-1 pb-0 m-2">Back</a>
-		<a id="pdf" href="#" class="d-inline m-2">Download PDF</a>
+		<a id="pdf" href="javascript:generatePDF()" id="downloadButton" class="d-inline m-2">Download PDF</a>
 		</div>
-	</div>	
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js" ></script>
+	<script>
+        async function generatePDF() {  //for resume download
+            document.getElementById("downloadButton");
+            var download= document.getElementById("doc2");
+            var doc = new jsPDF('l', 'pt');
+
+            await html2canvas(download, {
+                width: 1000
+            }).then((canvas) => {
+                doc.addImage(canvas.toDataURL("image/png"), 'PNG', 85, 5, 700, 550);
+            })
+
+            doc.save("{{resume.name}}-resume.pdf");
+        }
+    </script>
+
 </body>
+
 </html>
 
