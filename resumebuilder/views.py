@@ -5,7 +5,7 @@ from .forms import ProfileForm
 from .models import Profile
 
 # Create your views here.
-def index(request):
+def index(request):  # save and show all resumes
     if request.method == 'POST':
         fm = ProfileForm(request.POST, request.FILES)
         if fm.is_valid():
@@ -19,11 +19,11 @@ def index(request):
     resumes = Profile.objects.all()
     return render (request, 'index.html', {'form':fm, 'resume':resumes})
 
-def resume(request, id):
+def resume(request, id): #show resume of requested id
     resumes = Profile.objects.get(pk=id)
     return render(request, 'resume.html', {'resume':resumes})
 
-def deleteResume(request, id):
+def deleteResume(request, id): #delete resume
     if request.method == 'POST':
         resume = Profile.objects.get(pk=id)
         resume.delete()

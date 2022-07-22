@@ -25,7 +25,7 @@
   }
 </style>
 <body>
- <div class="container mb-5" id="main">
+ <div class="container mb-5">
   <h2 class=" alert alert-success text-center mt-1" style=" font-family: Lucida Console, Courier New, monospace;">Resume Builder</h2>
   <div class="row">
 
@@ -33,22 +33,24 @@
 
     <form action="" method="POST" enctype="multipart/form-data" class="shadow p-5"> 
      {% csrf_token %}
-
-     {% for message in messages %}
+      <!-- displays messages -->
+     {% for message in messages %}  
      <div id="msg" class="alert alert-info alert-dismissable p-1">
      <button type="button" class="close" data-bs-dismiss="alert" aria-hidden="true">&times;</button>
      <small style="color: green;"> {{message}} </small>
      </div>
      {% endfor %}
 
+     <!-- displays forms -->
      {% for fm in form %}
        <div class="form-group mb-3">
        {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
        </div>
      {% endfor %}
 
-     <input type="submit" class="btn btn-success" value="Create">
+     <input type="submit" class="btn btn-success" value="Create">  <!-- Create button-->
 
+     <!-- displays error messages on form -->
      {% if form.non_field_errors %}
        {% for error in form.non_field_errors %}
         <p class="alert alert-danger my-3">{{error}}</p>
@@ -58,19 +60,19 @@
   </div>
 
    <div class="col-sm-4">
-    <h4 class=" alert alert-primary text-center" style=" font-family: Lucida Console, Courier New, monospace;">View Resumes</h4>
+    <h4 class=" alert alert-primary text-center" style=" font-family: Lucida Console, Courier New, monospace;">View Resumes</h4> 
     
     {% if resume %}
       {% for resume in resume %}
-        <a href="{% url 'resume' resume.id %}"><h6  class=" alert alert-success text-center ">{{resume.name}}</h6></a>
+        <a href="{% url 'resume' resume.id %}"><h6  class=" alert alert-success text-center ">{{resume.name}}</h6></a>  <!-- Resume view link-->
         <form action="{% url 'delete' resume.id %}" method="POST">
           {% csrf_token %} 
-        <h6 class="alert alert-danger text-center p-0" ><input type="submit" class="btn" value="Delete"></h6>
+        <h6 class="alert alert-danger text-center p-0" ><input type="submit" class="btn" value="Delete"></h6> <!-- Delete button-->
         </form>
         <hr>
       {% endfor %}
     {% else%}
-      <h4 class="alert alert-danger text-center p-0", style=" font-family: Lucida Console, Courier New, monospace;">Empty</h4>
+      <h4 class="alert alert-danger text-center p-0", style=" font-family: Lucida Console, Courier New, monospace;">Empty</h4>  <!-- Empty message if no resumes-->
     {% endif %}
    </div>
   </div>

@@ -48,7 +48,7 @@ SKILL_CHOICES =[
     ('SQL', 'SQL')
 ]
 
-class ProfileForm(forms.ModelForm):
+class ProfileForm(forms.ModelForm):  #creating form for profile 
     gender = forms.ChoiceField(choices = GENDER_CHOICES, widget=forms.RadioSelect)
     skills = forms.MultipleChoiceField(choices=SKILL_CHOICES)
     class Meta:
@@ -66,7 +66,7 @@ class ProfileForm(forms.ModelForm):
             'course_module': 'Course Modules ',
             'gpa':'GPA ',
             'profile_picture' : 'Profile Picture '
-            }
+            } #changes label of form
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'title': forms.TextInput(attrs={'class': 'form-control'}),
