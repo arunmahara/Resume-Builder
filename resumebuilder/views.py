@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import HttpResponse
+
 from .forms import ProfileForm
 from .models import Profile
 
-# Create your views here.
-def index(request):  # save and show all resumes
+
+# save and show all resumes
+def index(request):  
     if request.method == 'POST':
         fm = ProfileForm(request.POST, request.FILES)
         if fm.is_valid():

@@ -1,4 +1,3 @@
-from cProfile import label
 from django import forms
 from .models import Profile
 
@@ -74,14 +73,14 @@ class ProfileForm(forms.ModelForm):  #creating form for profile
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
             'social': forms.URLInput(attrs={'class': 'form-control'}),
             'number': forms.NumberInput(attrs={'class': 'form-control'}),
-            'objective': forms.TextInput(attrs={'class': 'form-control'}),
+            'objective': forms.Textarea(attrs={'class': 'form-control'}),
             'company_name': forms.TextInput(attrs={'class': 'form-control'}),
             'job_title': forms.TextInput(attrs={'class': 'form-control'}),
-            'job_works': forms.TextInput(attrs={'class': 'form-control'}),
+            'job_works': forms.Textarea(attrs={'class': 'form-control'}),
             'job_date_from': forms.DateInput(attrs={'class': 'form-control', 'id':'datepickerfrom'}),
             'job_date_to': forms.DateInput(attrs={'class': 'form-control', 'id':'datepickerto'}),
             'college_name': forms.TextInput(attrs={'class': 'form-control'}),
             'course': forms.TextInput(attrs={'class': 'form-control'}),
-            'course_modules': forms.TextInput(attrs={'class': 'form-control'}),
+            'course_modules': forms.Textarea(attrs={'class': 'form-control'}),
             'gpa': forms.NumberInput(attrs={'class': 'form-control'})
         }

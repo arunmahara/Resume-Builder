@@ -1,8 +1,6 @@
-import django
 from django.db import models
-from django.contrib.auth.models import User
 
-# Create your models here.
+
 #profile model
 class Profile(models.Model):
     name = models.CharField(max_length=100)
@@ -16,8 +14,8 @@ class Profile(models.Model):
     company_name= models.CharField(max_length=100)
     job_title = models.CharField(max_length=50)
     job_works = models.TextField()
-    job_date_from = models.DateField(auto_now=False, auto_now_add=False)
-    job_date_to = models.DateField(auto_now=False, auto_now_add=False)
+    job_date_from = models.DateField()
+    job_date_to = models.DateField()
     college_name = models.CharField(max_length=100)
     course = models.CharField(max_length=50)
     course_modules = models.TextField()
